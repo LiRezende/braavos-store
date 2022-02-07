@@ -25,10 +25,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>1.4.199</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -55,5 +55,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
