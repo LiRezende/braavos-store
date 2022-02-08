@@ -1,5 +1,6 @@
 package com.lirezende.braavosstore.services;
 
+import com.lirezende.braavosstore.dto.ClientDTO;
 import com.lirezende.braavosstore.entities.Client;
 import com.lirezende.braavosstore.services.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
