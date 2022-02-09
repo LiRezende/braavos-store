@@ -1,6 +1,5 @@
 package com.lirezende.braavosstore.resources;
 
-import com.lirezende.braavosstore.dto.CategoryDTO;
 import com.lirezende.braavosstore.dto.ClientDTO;
 import com.lirezende.braavosstore.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +43,11 @@ public class ClientResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(client.getId()).toUri();
         return ResponseEntity.created(uri).body(client);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO client) {
+        client = service.update(id, client);
+        return ResponseEntity.ok().body(client);
     }
 }
