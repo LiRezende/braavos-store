@@ -3,8 +3,11 @@ package com.lirezende.braavosstore.services;
 import com.lirezende.braavosstore.dto.ClientDTO;
 import com.lirezende.braavosstore.entities.Client;
 import com.lirezende.braavosstore.repositories.ClientRepository;
+import com.lirezende.braavosstore.services.exceptions.DatabaseException;
 import com.lirezende.braavosstore.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -57,6 +60,17 @@ public class ClientService {
             return new ClientDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Cliente #" + id + " não encontrado.");
+        }
+    }
+
+    public void delete(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch(EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Cliente não encontrado #" + id);
+        } catch(DataIntegrityViolationException e) {
+            throw new DatabaseException("Violação de integridade.");
+
         }
     }
 }
