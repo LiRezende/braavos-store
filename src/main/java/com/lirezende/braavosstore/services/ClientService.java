@@ -30,4 +30,16 @@ public class ClientService {
         Client entity = client.orElseThrow(() -> new ResourceNotFoundException("Não existem resultados para esta busca."));
         return new ClientDTO(entity);
     }
+
+    @Transactional
+    public ClientDTO insert(ClientDTO client) {
+        Client entity = new Client();
+        entity.setName(client.getName());
+        entity.setCpf(client.getCpf());
+        entity.setIncome(client.getIncome());
+        entity.setBirthDate(client.getBirthDate());
+        entity.setChildren(client.getChildren());
+        entity = repository.save(entity);
+        return new ClientDTO(entity);
+    }
 }
