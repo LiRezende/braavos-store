@@ -13,7 +13,8 @@ public class Client implements Serializable {
     private String name;
     private String cpf;
     private Double income;
-    @Column(columnDefinition = "TIME", name = "birthDate")
+
+    @Column(columnDefinition = "TIME", name = "birthdate")
     private Instant birthDate;
     private Integer children;
 
