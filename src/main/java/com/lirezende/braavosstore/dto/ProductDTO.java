@@ -3,6 +3,10 @@ package com.lirezende.braavosstore.dto;
 import com.lirezende.braavosstore.entities.Category;
 import com.lirezende.braavosstore.entities.Product;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -11,10 +15,17 @@ import java.util.Set;
 
 public class ProductDTO implements Serializable {
     private Long id;
+
+    @Size(min = 3, max = 60, message = "Verifique o preenchimento do campo.")
+    @NotBlank(message = "Campo obrigatório!")
     private String name;
     private String description;
+
+    @Positive(message = "Verifique o preenchimento do campo.")
     private Double price;
     private String imgUrl;
+
+    @PastOrPresent(message = "Verifique o preenchimento do campo.")
     private Instant date;
 
     private List<CategoryDTO> categories = new ArrayList<>();
