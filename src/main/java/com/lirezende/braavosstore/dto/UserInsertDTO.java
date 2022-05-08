@@ -1,5 +1,8 @@
 package com.lirezende.braavosstore.dto;
 
+import com.lirezende.braavosstore.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO {
 
     private String password;

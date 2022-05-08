@@ -3,6 +3,7 @@ package com.lirezende.braavosstore.services;
 import com.lirezende.braavosstore.dto.RoleDTO;
 import com.lirezende.braavosstore.dto.UserDTO;
 import com.lirezende.braavosstore.dto.UserInsertDTO;
+import com.lirezende.braavosstore.dto.UserUpdateDTO;
 import com.lirezende.braavosstore.entities.Role;
 import com.lirezende.braavosstore.entities.User;
 import com.lirezende.braavosstore.repositories.RoleRepository;
@@ -56,7 +57,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO update(Long id, UserDTO dto) {
+    public UserDTO update(Long id, UserUpdateDTO dto) {
         try {
             User entity = repository.getOne(id);
             dtoToEntity(dto, entity);
