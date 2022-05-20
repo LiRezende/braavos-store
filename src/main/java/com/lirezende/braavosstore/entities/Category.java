@@ -14,10 +14,10 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-    @Column(columnDefinition = "TIME", name = "created_At")
+    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE", name = "created_At")
     private Instant createdAt;
 
-    @Column(columnDefinition = "TIME", name = "updated_At")
+    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE", name = "updated_At")
     private Instant updatedAt;
 
     @ManyToMany(mappedBy = "categories")

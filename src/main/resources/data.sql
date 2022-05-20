@@ -1,8 +1,8 @@
-INSERT INTO tb_category (name, created_At) VALUES ('Livros', NOW());
-INSERT INTO tb_category (name, created_At) VALUES ('Eletrônicos', NOW());
-INSERT INTO tb_category (name, created_At) VALUES ('Computadores', NOW());
+INSERT INTO tb_category (name, created_At) VALUES ('Livros', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z');
+INSERT INTO tb_category (name, created_At) VALUES ('Eletrônicos', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z');
+INSERT INTO tb_category (name, created_At) VALUES ('Computadores', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z');
 
-INSERT INTO tb_product (name, price, date, description, img_url) VALUES ('The Lord of the Rings', 90.5, TIMESTAMP WITH TIME ZONE '2020-07-13T20:50:07.12345Z', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
+INSERT INTO tb_product (name, price, date, description, img_url) VALUES ('The Lord of the Rings', 90.5, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
 INSERT INTO tb_product (name, price, date, description, img_url) VALUES ('Smart TV', 2190.0, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg');
 INSERT INTO tb_product (name, price, date, description, img_url) VALUES ('Macbook Pro', 1250.0, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/3-big.jpg');
 INSERT INTO tb_product (name, price, date, description, img_url) VALUES ('PC Gamer', 1200.0, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg');
@@ -55,16 +55,15 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (23, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (24, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (25, 3);
 
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Ligia da Silva', '08367939524', 8000.00, TIMESTAMP WITH TIME ZONE '1992-08-13T20:50:07.12345Z', 3);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jose Morais', '08367939524', 5000.00, TIMESTAMP WITH TIME ZONE '1988-03-10T10:21:00.10351Z', 2);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jurema Santos', '08367009524', 7500.00, TIMESTAMP WITH TIME ZONE '1990-05-25T10:21:30.10351Z', 4);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Felipe Barros', '18367009535', 9800.00, TIMESTAMP WITH TIME ZONE '2000-05-25T10:21:30.10351Z', 0);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Thiago Maia', '17367409535', 1800.00, TIMESTAMP WITH TIME ZONE '2002-04-25T10:21:30.10351Z', 1);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Julia Maia', '17367409444', 3000.00, TIMESTAMP WITH TIME ZONE '2000-02-14T10:21:30.10351Z', 1);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Patricia Souza', '00367409049', 3000.00, TIMESTAMP WITH TIME ZONE '1991-02-14T10:21:30.10351Z', 2);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Cassio Cruz', '09367409424', 7000.00, TIMESTAMP WITH TIME ZONE '1990-01-10T10:21:30.10351Z', 3);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jandyra Gaspar', '07567409444', 2500.00, TIMESTAMP WITH TIME ZONE '1989-09-18T10:21:30.10351Z', 2);
-INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Caio Nobrega', '07563409405', 5500.00, TIMESTAMP WITH TIME ZONE '2000-10-03T10:21:30.10351Z', 0);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jose Morais', '08367939524', 5000.00, TIME '1988-03-10T10:21:00.10351Z', 2);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jurema Santos', '08367009524', 7500.00, TIME '1990-05-25T10:21:30.10351Z', 4);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Felipe Barros', '18367009535', 9800.00, TIME '2000-05-25T10:21:30.10351Z', 0);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Thiago Maia', '17367409535', 1800.00, TIME '2002-04-25T10:21:30.10351Z', 1);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Julia Maia', '17367409444', 3000.00, TIME '2000-02-14T10:21:30.10351Z', 1);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Patricia Souza', '00367409049', 3000.00, TIME '1991-02-14T10:21:30.10351Z', 2);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Cassio Cruz', '09367409424', 7000.00, TIME '1990-01-10T10:21:30.10351Z', 3);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Jandyra Gaspar', '07567409444', 2500.00, TIME '1989-09-18T10:21:30.10351Z', 2);
+--INSERT INTO tb_client (name, cpf, income, birthdate, children) VALUES ('Caio Nobrega', '07563409405', 5500.00, TIME '2000-10-03T10:21:30.10351Z', 0);
 
 INSERT INTO tb_user (first_name, last_name, email, password) VALUES ('Alex', 'Brown', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_name, last_name, email, password) VALUES ('Maria', 'Green', 'maria@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
