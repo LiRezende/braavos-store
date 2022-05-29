@@ -3,6 +3,7 @@ package com.lirezende.braavosstore.resources;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lirezende.braavosstore.dto.ProductDTO;
 import com.lirezende.braavosstore.factory.Factory;
+import com.lirezende.braavosstore.factory.TokenUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,20 @@ public class ProductResourceIT {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private TokenUtil tokenUtil;
+
     private Long validId;
     private Long invalidId;
     private Long countTotalProducts;
+    private String username;
+    private String password;
 
     @BeforeEach
     void setUp() {
 
+        username = "maria@gmail.com";
+        password = "123456";
         validId = 1L;
         invalidId = 50000L;
         countTotalProducts = 25L;
@@ -57,6 +65,8 @@ public class ProductResourceIT {
     @Test
     public void updateShouldReturnProductDTOWhenValidId() throws Exception {
 
+        String accessToken = tokenUtil.obtainAccessToken(mockMvc, username, password);
+
         ProductDTO productDTO = Factory.createProductDTO();
         String jsonBody = objectMapper.writeValueAsString(productDTO);
 
@@ -64,9 +74,11 @@ public class ProductResourceIT {
         String expectedDescription = productDTO.getDescription();
 
         ResultActions result = mockMvc.perform(put("/products/{id}", validId)
+                .header("Authorization", "Bearer " + accessToken)
                 .content(jsonBody)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
+
         result.andExpect(status().isOk());
         result.andExpect(jsonPath("$.id").value(validId));
         result.andExpect(jsonPath("$.name").value(expectedName));
@@ -76,11 +88,15 @@ public class ProductResourceIT {
     @Test
     public void updateShouldReturnNotFoundWhenInvalidId() throws Exception {
 
-        ProductDTO productDTO = Factory.createProductDTO();
+        String accessToken = tokenUtil.obtainAccessToken(mockMvc, username, password);
 
+        ProductDTO productDTO = Factory.createProductDTO();
         String jsonBody = objectMapper.writeValueAsString(productDTO);
 
         ResultActions result = mockMvc.perform(put("/products/{id}", invalidId)
+                .header("Authorization", "Bearer " + accessToken)
+                .content(jsonBody)
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
         result.andExpect(status().isNotFound());
     }

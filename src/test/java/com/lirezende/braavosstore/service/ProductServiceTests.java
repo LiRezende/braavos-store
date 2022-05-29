@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,6 +27,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(SpringExtension.class)
 public class ProductServiceTests {
@@ -66,13 +67,15 @@ public class ProductServiceTests {
 
         Mockito.doThrow(DataIntegrityViolationException.class).when(productRepository).deleteById(relatedId);
 
-        Mockito.when(productRepository.save(ArgumentMatchers.any())).thenReturn(product);
+        Mockito.when(productRepository.save(any())).thenReturn(product);
 
         Mockito.when(productRepository.findById(validId)).thenReturn(Optional.of(product));
 
         Mockito.when(productRepository.findById(invalidId)).thenReturn(Optional.empty());
 
-        Mockito.when(productRepository.findAll((Pageable)ArgumentMatchers.any())).thenReturn(page);
+        Mockito.when(productRepository.find(any(), any(), any())).thenReturn(page);
+
+        Mockito.when(productRepository.findAll((Pageable) any())).thenReturn(page);
 
         Mockito.when(productRepository.getOne(validId)).thenReturn(product);
 
@@ -113,11 +116,9 @@ public class ProductServiceTests {
     @Test
     public void findAllPagedShouldReturnPage() {
 
-        Pageable pageable = PageRequest.of(0, 10);
-        Page<ProductDTO> result = productService.findAllPaged(pageable);
-
+        Pageable pageable = PageRequest.of(0, 20);
+        Page<ProductDTO> result = productService.findAllPaged(0L, "", pageable);
         Assertions.assertNotNull(result);
-        Mockito.verify(productRepository, Mockito.times(1)).findAll(pageable);
     }
 
     @Test
